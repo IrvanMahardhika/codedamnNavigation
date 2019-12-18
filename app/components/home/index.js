@@ -27,15 +27,11 @@ const Home = props => {
     return (
         <View style={parent} >
             <Text style={heading} >Login</Text>
-            <TextInput style={input} placeholder="Username" onChangeText={setUsername} />
+            <TextInput style={input} placeholder="Username" onChangeText={setUsername} autoCapitalize='none' />
             <TextInput style={input} placeholder="Password" onChangeText={setPassword} secureTextEntry={true} />
             <Button title="Login" onPress={checkLogin} />
         </View>
     );
-};
-
-Home.navigationOptions = {
-    header: null
 };
 
 export default Home;

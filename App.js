@@ -1,23 +1,29 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, ScrollView, View, Text, Button } from 'react-native';
 import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
+import { createDrawerNavigator, DrawerSidebar } from 'react-navigation-drawer';
 
-import Home from './app/components/home';
-import Dashboard from './app/components/dashboard';
+import Home from '@components/home';
+import Dashboard from '@components/dashboard';
+import Sidebar from '@components/sidebar';
 
-export default createAppContainer(createStackNavigator({
+const Appstack = createAppContainer(createDrawerNavigator({
     home: {
-        screen: Home,
-        navigationOptions: {
-            header: null
-        }
+        screen: Home
     },
     dashboard: {
-        screen: Dashboard,
-        navigationOptions: {
-          header: null
-        }
+        screen: Dashboard
     }
+}, {
+    contentComponent: ({navigation}) => <Sidebar navigation={navigation} />,
+    initialRouteName: 'dashboard'
 }));
+
+const App = () => {
+    return (
+        <Appstack />
+    );
+};
+
+export default App;
 
